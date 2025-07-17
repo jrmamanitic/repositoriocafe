@@ -107,7 +107,7 @@ INSERT INTO `pedidos` (`id`, `id_sala`, `num_mesa`, `fecha`, `total`, `observaci
 --
 
 CREATE TABLE `platos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL ,
   `nombre` varchar(200) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   `imagen` varchar(100) DEFAULT NULL,
@@ -158,7 +158,6 @@ INSERT INTO `platos` (`id`, `nombre`, `precio`, `imagen`, `fecha`, `estado`, `ca
 (18, 'BAGEL CON QUESO CREMA', '14.00', '', NULL, 1, 3),
 (19, 'ENSALADA DE FRUTAS', '15.00', '', NULL, 1, 3),
 (20, 'MOUSSE DE CHOCOLATE', '22.00', '', NULL, 1, 2);
-
 
 -- --------------------------------------------------------
 
@@ -247,6 +246,36 @@ ALTER TABLE `pedidos`
 --
 ALTER TABLE `platos`
   ADD PRIMARY KEY (`id`);
+
+CREATE TABLE links_pago (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  id_plato INT NOT NULL,
+  url VARCHAR(255) NOT NULL,
+  FOREIGN KEY (id_plato) REFERENCES platos(id)
+);
+
+INSERT INTO links_pago (id_plato, url) VALUES
+(1, 'https://buy.stripe.com/test_dRm7sE4kK4CY9IUbeCc7u01'),
+(2, 'https://buy.stripe.com/test_bJecMYeZoc5qaMY0zYc7u02'),
+(3, 'https://buy.stripe.com/test_fZu5kweZob1m2gseqOc7u03'),
+(4, 'https://buy.stripe.com/test_9B65kw8B04CY3kwbeCc7u04'),
+(5, 'https://buy.stripe.com/test_00w28kcRg4CYaMYeqOc7u05'),
+(6, 'https://buy.stripe.com/test_cNi4gs7wW7PaaMY96uc7u06'),
+(7, 'https://buy.stripe.com/test_3cI28k5oO5H23kwbeCc7u07'),
+(8, 'https://buy.stripe.com/test_cNi7sE2cC3yU6wI6Ymc7u08'),
+(9, 'https://buy.stripe.com/test_fZu4gs4kKedyaMY82qc7u09'),
+(10, 'https://buy.stripe.com/test_3cI3co3gGb1m08kaayc7u0a'),
+(11, 'https://buy.stripe.com/test_28E28k4kK4CYdZa2I6c7u0b'),
+(12, 'https://buy.stripe.com/test_9B6cMY8B0b1m4oA2I6c7u0c'),
+(13, 'https://buy.stripe.com/test_00w00c2cC8Teg7ibeCc7u0d'),
+(14, 'https://buy.stripe.com/test_7sY8wI7wWedy08kbeCc7u0e'),
+(15, 'https://buy.stripe.com/test_cNi7sEaJ89Xi5sE82qc7u0f'),
+(16, 'https://buy.stripe.com/test_3cI6oAg3s9Xif3e4Qec7u0g'),
+(17, 'https://buy.stripe.com/test_eVq8wIaJ83yUaMYgyWc7u0h'),
+(18, 'https://buy.stripe.com/test_7sY8wI18y4CYaMYdmKc7u0i'),
+(19, 'https://buy.stripe.com/test_fZubIUcRg1qM9IU4Qec7u0j'),
+(20, 'https://buy.stripe.com/test_fZuaEQ4kK2uQf3e4Qec7u00');
+
 
 --
 -- Indices de la tabla `salas`
